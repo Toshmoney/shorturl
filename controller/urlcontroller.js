@@ -25,7 +25,17 @@ const createNewShort = async(req, res)=>{
 
 }
 
+const getUrl = async(req, res)=>{
+    const shortUrl = await urlModel.findOne({ shorten: req.params.shorten })
+  if (shortUrl == null) return res.status(404).json({error:"Sorry this link is not available in our database"})
+
+  shortUrl.clicks++
+  await shortUrl.save()
+
+  res.redirect(shortUrl.url)
+}
 
 module.exports = {
-    createNewShort
+    createNewShort,
+    getUrl
 }
