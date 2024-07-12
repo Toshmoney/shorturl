@@ -14,14 +14,14 @@ const createNewShort = async(req, res)=>{
 
     const shortenedUrl = await urlModel.create({
         url,
-        shorten: "https://shorturl-ovln.onrender.com/"+generateRandom
+        shorten: generateRandom
     })
 
     if(!shortenedUrl){
         return res.json({error:"something went wrong!"})
     }
 
-    return res.status(201).json({message:"Successfully shortened new url", success:true, shortenedUrl})
+    return res.status(201).json({message:"Successfully shortened new url", success:true, shorturl: "https://shorturl-ovln.onrender.com/"+ shortenedUrl.shorten})
 
 }
 
