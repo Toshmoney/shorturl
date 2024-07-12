@@ -7,7 +7,7 @@ const createNewShort = async(req, res)=>{
     }
     const {url} = req.body;
     if(!url){
-        res.status(404).json({error:"url is required!"})
+        return res.status(404).json({error:"url is required!"})
     }
 
     const generateRandom = generateRandomLetters(5);
