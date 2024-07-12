@@ -13,7 +13,7 @@ const createNewShort = async(req, res)=>{
     const urlExist = await urlModel.findOne({url});
 
     if(urlExist){
-        return res.json({shorturl: "https://shorturl-ovln.onrender.com/"+ urlExist.shorten})
+        return res.json({shorturl: urlExist.shorten})
     }
     const generateRandom = generateRandomLetters(5);
 
