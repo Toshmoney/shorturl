@@ -10,6 +10,11 @@ const createNewShort = async(req, res)=>{
         return res.status(404).json({error:"url is required!"})
     }
 
+    const urlExist = await urlModel.findOne({url});
+
+    if(urlExist){
+        return res.json({shorturl: "https://shorturl-ovln.onrender.com/"+ urlExist.shorten})
+    }
     const generateRandom = generateRandomLetters(5);
 
     const shortenedUrl = await urlModel.create({
