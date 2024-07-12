@@ -14,7 +14,7 @@ const createNewShort = async(req, res)=>{
 
     const shortenedUrl = await urlModel.create({
         url,
-        shorten: generateRandom
+        shorten: "https://shorturl-ovln.onrender.com/"+generateRandom
     })
 
     if(!shortenedUrl){
